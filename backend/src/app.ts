@@ -10,7 +10,7 @@ const port = 3000;
 import bodyParser from "body-parser";
 
 const zbc = new ZBClient();
-zbc.deployWorkflow("../bpmn/model.bpmn").then(console.log);
+zbc.deployWorkflow("./bpmn/model.bpmn").then(console.log);
 
 zbc.createWorker({
   taskType: "log-message",
