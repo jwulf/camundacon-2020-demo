@@ -6,6 +6,7 @@ dependencies:
   cors: 2.8.5
   dotenv: 8.2.0
   express: 4.17.1
+  typescript: 3.8.3
   zeebe-node: 0.23.0-alpha.4
 lockfileVersion: 5.1
 packages:
@@ -1171,6 +1172,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-/Gc55XSQXR3codLdomQZZRXa41onZJF9WXbNH14zJVeluj0IZacEh4UKUroRvRLVPg0uytDQsBO0u7VlKJ3Gkw==
+  /typescript/3.8.3:
+    dev: false
+    engines:
+      node: '>=4.2.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==
   /unpipe/1.0.0:
     dev: false
     engines:
@@ -1241,4 +1249,5 @@ specifiers:
   cors: ^2.8.5
   dotenv: ^8.2.0
   express: ^4.17.1
+  typescript: ^3.8.3
   zeebe-node: ^0.23.0-alpha.4
