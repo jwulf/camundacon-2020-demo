@@ -22,6 +22,7 @@ FROM node:slim as runtime
 
 WORKDIR /app
 ENV NODE_ENV=production
+EXPOSE 3000
 
 ## Copy the necessary files form builder
 COPY --from=builder "/app/dist/" "/app/dist/"
