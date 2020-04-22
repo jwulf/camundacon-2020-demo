@@ -10,5 +10,3 @@ docker-compose up -d
 cd ..
 docker-compose up -d
 ```
-
-18.156.32.160
