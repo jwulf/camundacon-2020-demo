@@ -19,7 +19,7 @@ jobs:
       - run: npm run build --if-present
       - run: npm test
         env:
-          CI: true
+          CI: "true"
       - uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete
