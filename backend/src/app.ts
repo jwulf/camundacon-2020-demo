@@ -4,14 +4,15 @@ import bodyParser from "body-parser";
 import express from "express";
 import { zbc } from "./zb";
 import { getData } from "./db";
-const http = require("http").createServer(express());
+const app = express();
+
+const http = require("http").createServer(app);
 
 const io = require("socket.io")(http);
 
 export function emit(data) {
   io.emit("response", data);
 }
-const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
