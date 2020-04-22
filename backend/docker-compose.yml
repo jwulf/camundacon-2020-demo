@@ -1,6 +1,10 @@
 version: "2"
+
 networks:
-  letsencrypt:
+  default:
+    external:
+      letsencrypt:
+
 services:
   server:
     restart: "always"
@@ -12,5 +16,3 @@ services:
       VIRTUAL_HOST: camundacon-live.joshwulf.com
       LETSENCRYPT_HOST: camundacon-live.joshwulf.com
       LETSENCRYPT_EMAIL: josh.wulf@camunda.com
-    networks:
-      - letsencrypt
