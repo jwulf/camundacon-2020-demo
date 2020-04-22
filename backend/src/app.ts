@@ -12,6 +12,7 @@ app.options("*", cors());
 const port = 3000;
 
 const zbc = new ZBClient();
+console.log(process.env);
 zbc.deployWorkflow("./bpmn/model.bpmn").then(console.log);
 
 zbc.createWorker({
