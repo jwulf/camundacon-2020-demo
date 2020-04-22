@@ -4,7 +4,13 @@ import bodyParser from "body-parser";
 import express from "express";
 import { zbc } from "./zb";
 import { getData } from "./db";
+const http = require("http").createServer(express());
 
+const io = require("socket.io")(http);
+
+function emit(data) {
+  io.emit("response", data);
+}
 const app = express();
 
 app.use(cors());
@@ -41,6 +47,6 @@ app.post("/", async (req, res) => {
     .catch((r) => res.json(r));
 });
 
-app.listen(port, () =>
+http.listen(port, () =>
   console.log(`Example app listening at http://localhost:${port}`)
 );
