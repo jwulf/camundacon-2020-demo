@@ -1,8 +1,9 @@
 require("dotenv").config();
-import { ZBClient } from "zeebe-node";
 import cors from "cors";
 import bodyParser from "body-parser";
 import express from "express";
+import { zbc } from "./zb";
+
 const app = express();
 
 app.use(cors());
@@ -11,20 +12,8 @@ app.options("*", cors());
 
 const port = 3000;
 
-const zbc = new ZBClient();
-
 console.log(process.cwd());
 console.log("process.env", process.env);
-
-zbc.deployWorkflow("./bpmn/model.bpmn").then(console.log);
-
-zbc.createWorker({
-  taskType: "log-message",
-  taskHandler: (job, complete) => {
-    console.log(job);
-    complete.success();
-  },
-});
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
