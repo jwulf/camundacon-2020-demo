@@ -8,7 +8,7 @@ const http = require("http").createServer(express());
 
 const io = require("socket.io")(http);
 
-function emit(data) {
+export function emit(data) {
   io.emit("response", data);
 }
 const app = express();
