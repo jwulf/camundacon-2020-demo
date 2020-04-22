@@ -3,7 +3,7 @@
   import { get } from "svelte/store";
 
   let text = "Submit";
-  const url = "https://camundacon-live.joshwulf.com/";
+  const url = "/api/";
   function clickSubmit() {
     console.log(
       JSON.stringify({
