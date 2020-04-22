@@ -13,6 +13,7 @@ const port = 3000;
 
 const zbc = new ZBClient();
 
+console.log(process.cwd());
 console.log("process.env", process.env);
 
 zbc.deployWorkflow("./bpmn/model.bpmn").then(console.log);
