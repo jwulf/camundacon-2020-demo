@@ -1,5 +1,6 @@
 import { ZBClient } from "zeebe-node";
 import { upsert } from "./db";
+import { emit } from "./socket";
 
 export const zbc = new ZBClient();
 
