@@ -33,6 +33,10 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.get("/", (_, res) => {
+  res.send("Hello CamundaCon Live!");
+});
+
 app.post("/", async (req, res) => {
   zbc
     .createWorkflowInstance("camundacon-demo", { ...req.body, valid: true })
