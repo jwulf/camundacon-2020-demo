@@ -4,7 +4,10 @@ import cors from "cors";
 
 import express from "express";
 const app = express();
+
 app.use(cors());
+app.use(bodyParser.json());
+app.options("*", cors());
 
 const port = 3000;
 import bodyParser from "body-parser";
@@ -19,19 +22,6 @@ zbc.createWorker({
     complete.success();
   },
 });
-
-app.use(bodyParser.json());
-
-app.options("*", cors()); // include before other routes
-app.use(cors());
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
 
 app.post("/", async (req, res) => {
   zbc

@@ -19,7 +19,7 @@
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json, text/plain, */*"
+        Accept: "application/json"
       },
       body: JSON.stringify({
         message: get(message),
