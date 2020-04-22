@@ -22,6 +22,10 @@ nSQL().createDatabase({
 
 export function upsert(data) {
   nSQL().useDatabase("camundacon");
-
   nSQL("responses").query("upsert", data).exec();
+}
+
+export function getData() {
+  nSQL().useDatabase("camundacon");
+  return nSQL("responses").query("select").exec();
 }

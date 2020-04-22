@@ -16,7 +16,9 @@ zbc.createWorker({
 zbc.createWorker({
   taskType: "update-database",
   taskHandler: (job, complete) => {
-    upsert(job.variables);
+    const data = job.variables;
+    upsert(data);
+    emit(data);
     complete.success();
   },
 });

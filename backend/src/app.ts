@@ -3,6 +3,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import express from "express";
 import { zbc } from "./zb";
+import { getData } from "./db";
 
 const app = express();
 
@@ -27,6 +28,10 @@ app.use(function (req, res, next) {
 
 app.get("/", (_, res) => {
   res.send("Hello CamundaCon Live!");
+});
+
+app.get("/data", (_, res) => {
+  getData().then((rows) => res.json(rows));
 });
 
 app.post("/", async (req, res) => {
