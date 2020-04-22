@@ -8,8 +8,8 @@ services:
     container_name: "server"
     environment:
       PORT: 3000
-      VIRTUAL_HOST: 18.156.32.160
-      LETSENCRYPT_HOST: 18.156.32.160
+      VIRTUAL_HOST: camundacon-live.joshwulf.com
+      LETSENCRYPT_HOST: camundacon-live.joshwulf.com
       LETSENCRYPT_EMAIL: josh.wulf@camunda.com
     networks:
       - letsencrypt
