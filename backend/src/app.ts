@@ -22,6 +22,8 @@ zbc.createWorker({
 
 app.use(bodyParser.json());
 
+app.options("*", cors()); // include before other routes
+
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
