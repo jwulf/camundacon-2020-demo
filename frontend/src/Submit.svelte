@@ -2,6 +2,7 @@
   import { message, latitude, longitude, likes } from "./stores";
   import { get } from "svelte/store";
 
+  let submitDisabled = false;
   let text = "Submit";
   const url = "/api/";
   function clickSubmit() {
@@ -14,6 +15,8 @@
       })
     );
     text = "Submitting...";
+    submitDisabled = true;
+
     fetch(url, {
       method: "POST",
       mode: "cors",
@@ -32,6 +35,7 @@
         res.json().then(res => {
           alert(JSON.stringify(res));
           text = "Submit";
+          submitDisabled = false;
         })
       )
       .catch(console.log);
@@ -42,5 +46,6 @@
 <input
   type="button"
   value={text}
+  disabled={submitDisabled}
   class="rounded-pill btn btn-success float-right p-l-2 p-r-2 m-2"
   on:click={clickSubmit} />
