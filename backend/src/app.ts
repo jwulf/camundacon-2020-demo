@@ -1,7 +1,7 @@
 require("dotenv").config();
 import { ZBClient } from "zeebe-node";
 import cors from "cors";
-
+import bodyParser from "body-parser";
 import express from "express";
 const app = express();
 
@@ -10,7 +10,6 @@ app.use(bodyParser.json());
 app.options("*", cors());
 
 const port = 3000;
-import bodyParser from "body-parser";
 
 const zbc = new ZBClient();
 zbc.deployWorkflow("./bpmn/model.bpmn").then(console.log);
