@@ -8,6 +8,8 @@ networks:
 services:
   server:
     restart: "always"
+    ports:
+      - "3000:3000"
     build: .
     container_name: "server"
     environment:
