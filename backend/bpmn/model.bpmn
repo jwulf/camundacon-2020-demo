@@ -16,7 +16,7 @@
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="SequenceFlow_1d3sf7v" name="Yes" sourceRef="ExclusiveGateway_1wkwaeg" targetRef="Task_0agdxj7" />
     <bpmn:sequenceFlow id="SequenceFlow_0lsg1i4" name="No" sourceRef="ExclusiveGateway_1wkwaeg" targetRef="EndEvent_0p3apgu">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">valid==false</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=valid=false</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:endEvent id="EndEvent_0p3apgu" name="Message&#10;rejected">
       <bpmn:incoming>SequenceFlow_0lsg1i4</bpmn:incoming>
