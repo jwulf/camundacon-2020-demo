@@ -23,6 +23,16 @@ zbc.createWorker({
   },
 });
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "POST");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 app.post("/", async (req, res) => {
   zbc
     .createWorkflowInstance("camundacon-demo", { ...req.body, valid: true })
