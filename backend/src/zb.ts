@@ -6,20 +6,14 @@ export const zbc = new ZBClient();
 
 zbc.deployWorkflow("./bpmn/model.bpmn").then(console.log);
 
-zbc.createWorker({
-  taskType: "log-message",
-  taskHandler: (job, complete) => {
-    console.log(job);
-    complete.success();
-  },
+zbc.createWorker(null, "log-message", (job, complete) => {
+  console.log(job);
+  complete.success();
 });
 
-zbc.createWorker({
-  taskType: "update-database",
-  taskHandler: (job, complete) => {
-    const data = job.variables;
-    upsert(data);
-    emit(data);
-    complete.success();
-  },
+zbc.createWorker(null, "update-database", (job, complete) => {
+  const data = job.variables;
+  upsert(data);
+  emit(data);
+  complete.success();
 });
