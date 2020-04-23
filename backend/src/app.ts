@@ -11,7 +11,7 @@ const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 
 export function emit(data) {
-  io.emit("response", data);
+  io.emit("response", [data]);
 }
 
 app.use(cors());
