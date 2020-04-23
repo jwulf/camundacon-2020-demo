@@ -14,4 +14,3 @@ Starter pack for Svelte 3/Rollup/Typescript/Visual Studio Code:
 git clone https://github.com/geakstr/svelte-3-rollup-typescript-vscode.git
 cd svelte-3-rollup-typescript-vscode && rm -rf .git && npm install
 ```
-

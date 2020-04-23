@@ -1,5 +1,5 @@
 {
-  "name": "camundacon-dashboard",
+  "name": "svelte-3-rollup-typescript-vscode",
   "version": "1.1.0",
   "description": "starter for svelte 3/rollup/typescript/vscode",
   "keywords": [
@@ -34,7 +34,9 @@
     "rollup": "1.16.1",
     "rollup-plugin-bundle-html": "0.2.1",
     "rollup-plugin-commonjs": "10.0.0",
+    "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-livereload": "1.0.1",
+    "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-resolve": "5.0.4",
     "rollup-plugin-serve": "1.0.1",
     "rollup-plugin-svelte": "5.1.0",
@@ -83,8 +85,8 @@
   },
   "dependencies": {
     "@types/ol": "^6.3.1",
-    "@types/openlayers": "^4.6.17",
     "ol": "^6.3.1",
+    "r": "0.0.5",
     "wordcloud": "^1.1.1"
   }
 }

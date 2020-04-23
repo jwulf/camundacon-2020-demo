@@ -7,6 +7,7 @@ const typescript = require("rollup-plugin-typescript2");
 const tscompile = require("typescript");
 const { terser } = require("rollup-plugin-terser");
 const livereload = require("rollup-plugin-livereload");
+const json = require("rollup-plugin-json");
 
 const isProd = process.env.NODE_ENV === "production";
 const isDev = process.env.NODE_ENV === "development";
@@ -27,6 +28,7 @@ const plugins = [
     dest: "build",
     filename: "index.html",
   }),
+  json(),
 ];
 
 if (isDev) {
@@ -54,7 +56,6 @@ module.exports = {
     name: "main",
     file: "build/js/main.js",
     format: "iife",
-    globals: { wordcloud: "WordCloud" },
   },
   plugins,
 };

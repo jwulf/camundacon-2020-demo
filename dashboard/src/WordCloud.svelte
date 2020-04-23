@@ -1,11 +1,24 @@
 <script>
   import WordCloud from "wordcloud";
+  import { data } from "./stores";
 
   const list = [["Niall", 12], ["Niall's Beard", 8]];
-  console.log();
-  setTimeout(() => {
+  const likes = [];
+  data.subscribe(value => {
+    console.log(value);
+    value.forEach(v => {
+      likes[v.likes] = likes[v.likes] ? likes[v.likes] + 1 : 1;
+    });
+    const words = Object.entries(likes);
+    render(words);
+  });
+
+  function render() {
     const el = document.getElementById("wordcloud");
     console.log(el);
+    if (!el) {
+      return;
+    }
     WordCloud(el, {
       gridSize: Math.round((16 * el.width) / 1024),
       weightFactor: function(size) {
@@ -19,9 +32,8 @@
       rotationSteps: 2,
       backgroundColor: "#ffe0e0",
       list
-    }),
-      1000;
-  });
+    });
+  }
 </script>
 
 <canvas
