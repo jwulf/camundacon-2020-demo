@@ -12,7 +12,7 @@
   import { easeOut } from "ol/easing";
   import { unByKey } from "ol/Observable";
   import { getVectorContext } from "ol/render";
-  // import { latitude, longitude } from "./stores";
+  import { point } from "./stores";
   import { get } from "svelte/store";
   let spinnerClass = "none";
   let map: Map;
@@ -20,12 +20,8 @@
   let tileLayer: TileLayer;
   const latitude = 8.82;
   const longitude = 37.41;
-
-  function handleClick(e: any) {
-    e.preventDefault();
-    spinnerClass = "spinner-border spinner-border-sm";
-    navigator.geolocation.getCurrentPosition(success, console.error);
-  }
+  let initialised = false;
+  const zoomLevel = 0.5;
 
   // https://openlayers.org/en/latest/examples/feature-animation.html
   // Create map
@@ -38,7 +34,7 @@
       layers: [tileLayer],
       view: new View({
         center: fromLonLat([longitude, latitude]),
-        zoom: 0
+        zoom: zoomLevel
       })
     });
     source = new VectorSource({
@@ -51,17 +47,34 @@
       source
     });
     map.addLayer(vector);
+    initialised = true;
+    setTimeout(
+      () =>
+        point.subscribe(
+          ({
+            longitude,
+            latitude
+          }: {
+            longitude: number;
+            latitude: number;
+          }) => {
+            if (!initialised) {
+              return;
+            }
+            const pin = new Feature(
+              new Point(fromLonLat([longitude, latitude]))
+            );
+
+            const view = map.getView();
+            view.setCenter(fromLonLat([longitude, latitude]));
+            view.setZoom(zoomLevel);
+            spinnerClass = "none";
+            source.addFeature(pin);
+          }
+        ),
+      500
+    );
   });
-
-  function success(position: any) {
-    const pin = new Feature(new Point(fromLonLat([longitude, latitude])));
-
-    const view = map.getView();
-    view.setCenter(fromLonLat([longitude, latitude]));
-    view.setZoom(10);
-    spinnerClass = "none";
-    source.addFeature(pin);
-  }
 
   const duration = 3000;
   function flash(feature: Feature) {
@@ -139,4 +152,3 @@
     <div id="map" style="height:600px" />
   </div>
 </div>
-

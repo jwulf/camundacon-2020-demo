@@ -2,6 +2,7 @@ import { writable } from "svelte/store";
 declare const io: any;
 
 export const data = writable([]);
+export const point = writable({ longitude: 37.41, latitude: 8.8 });
 
 console.log("Fetching data...");
 fetch("https://camundacon-live.joshwulf.com/data").then((res) => {
@@ -13,6 +14,6 @@ fetch("https://camundacon-live.joshwulf.com/data").then((res) => {
 
 const socket = io("https://camundacon-live.joshwulf.com/");
 
-socket.on("emit", (deets: any) => {
+socket.on("response", (deets: any) => {
   data.set(deets);
 });

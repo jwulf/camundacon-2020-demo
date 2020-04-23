@@ -1,19 +1,30 @@
 <script>
   import WordCloud from "wordcloud";
-  import { data } from "./stores";
+  import { data, point } from "./stores";
 
-  const list = [["Niall", 12], ["Niall's Beard", 8]];
   const likes = [];
+  const longLat = {};
   data.subscribe(value => {
     console.log(value);
     value.forEach(v => {
       likes[v.likes] = likes[v.likes] ? likes[v.likes] + 1 : 1;
+      if (!longLat[v.longitude]) {
+        longLat[v.longitude] = {};
+      }
+      if (!longLat[v.longitude][v.latitude]) {
+        const { longitude, latitude } = v;
+        longLat[longitude][latitude] = {
+          longitude,
+          latitude
+        };
+        point.set({ longitude, latitude });
+      }
     });
     const words = Object.entries(likes);
     render(words);
   });
 
-  function render() {
+  function render(words) {
     const el = document.getElementById("wordcloud");
     console.log(el);
     if (!el) {
@@ -31,7 +42,7 @@
       rotateRatio: 0,
       rotationSteps: 2,
       backgroundColor: "#ffe0e0",
-      list
+      list: words
     });
   }
 </script>
