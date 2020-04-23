@@ -20,9 +20,6 @@ app.options("*", cors());
 
 const port = 3000;
 
-console.log(process.cwd());
-console.log("process.env", process.env);
-
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "POST");
